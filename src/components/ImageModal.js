@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, Collapse, ListGroup, ListGroupItem, Modal } from 'react-bootstrap';
+import { Button, Card, Collapse, ListGroup, ListGroupItem, Modal, Spinner } from 'react-bootstrap';
 
 export default function ImageModal({ image, show, handleKeepSearching, handlePickMeme }) {
   return (
@@ -15,22 +15,15 @@ export default function ImageModal({ image, show, handleKeepSearching, handlePic
             <Card.Img className="modal-img" variant="top" src={image?.url} />
             <Card.Body>
               <Card.Title>{image?.name}</Card.Title>
-              <Card.Text>
-                Here will be the meme info
-              </Card.Text>
             </Card.Body>
             <span style={{display: 'flex', justifyContent: 'space-around', padding: '5px'}}>
             <Button variant="success" onClick={handlePickMeme}>
                 This one!
               </Button>
               <Button variant="danger" onClick={handleKeepSearching}>
-                Keep Searchin'...
+                Keep Searchin'
               </Button>
             </span>
-            {/* <ListGroup className="list-group-flush">
-              <ListGroupItem>meme tags</ListGroupItem>
-              <ListGroupItem>meme rank</ListGroupItem>
-            </ListGroup> */}
           </Card>
         </Collapse>
       </Modal.Body>

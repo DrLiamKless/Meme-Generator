@@ -1,46 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { fabric } from 'fabric';
-import { Button } from 'react-bootstrap';
 
-export default function Canvas({ image }) {
-  const [canvas, setCanvas] = useState(undefined);
-  const [decorations, setDecorations] = useState([])
+export default function Canvas({ name, height, width, setCanvas }) {
   
+  // canvas initiator 
+  const initCanvas = () => (
+    new fabric.Canvas('canvas', {
+        height,
+        width,
+      }).setZoom(0.5)
+  )
+  
+  // create canvas
   useEffect(() => {
     setCanvas(initCanvas());
   }, []);
-  
-  const initCanvas = () => (
-  new fabric.Canvas('canvas', {
-      height: image?.height,
-      width: image?.width,
-      backgroundImage: image?.url
-    })
-  )
-
-  const addRect = canvi => {
-    const rect = new fabric.Rect({
-      height: 280,
-      width: 200,
-      fill: 'yellow'
-    });
-    canvi.add(rect);
-    canvi.renderAll();
-  }
-
-  const joinToDecorations = ((decoration) => {setDecorations(prevDecorations => [...prevDecorations, decoration])})
-
-  const addText = (canvi, text) => {
-    const textBox = new fabric.Textbox(text);
-    canvi.add(textBox);
-    canvi.renderAll();
-    joinToDecorations(textBox)
-  }
 
     return(
-      <div>
-        <h1>Editor</h1>
-        <Button onClick={() => addText(canvas, 'add')}>Add Text</Button>
+      <div id="canvas-container"> 
+        <h1>{name}</h1>
         <canvas id="canvas" />
       </div>
   );

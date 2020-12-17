@@ -9,8 +9,10 @@
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
     "fabric": "^4.2.0",
+    "file-saver": "^2.0.5",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
+    "react-bootstrap-icons": "^1.1.0",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"

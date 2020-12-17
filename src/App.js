@@ -6,6 +6,7 @@ import { useLayoutEffect } from 'react';
 import NavBar from './components/NavBar';
 import Canvas from './components/Canvas';
 import Editor from './pages/Editor';
+import MyMemes from './pages/MyMemes';
 
 function App() {
   const [pickedMeme, setPickedMeme] = useState(undefined);
@@ -20,11 +21,11 @@ function App() {
       }
       {
         tab === 'editor' &&
-        <Editor image={pickedMeme}/>
+      <Editor image={pickedMeme} />
       }
       {
-        tab === 'My memes' &&
-        <div>My Memes</div>
+        tab === 'my memes' &&
+        <MyMemes />
       }
     </div>
   );
