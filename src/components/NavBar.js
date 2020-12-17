@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
-import {Nav, Navbar, Overlay, Tooltip } from 'react-bootstrap'
+import {Nav, Navbar, Overlay } from 'react-bootstrap'
+import icon from '../images/icon.jpg'
 
 export default function NavBar({setTab, tab, pickedMeme}) {
   const [showDisabledAlert, setShowDisabledAlert] = useState(false);
@@ -15,7 +16,10 @@ export default function NavBar({setTab, tab, pickedMeme}) {
   return (
     <div style={{width: '100vw'}}>
       <Navbar onSelect={(tab) => setTab(tab)} expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand><strong>MeMe Generator</strong></Navbar.Brand>
+        <Navbar.Brand>
+          <img src={icon} style={{height: '30px', width: '30px'}}/>
+          <strong style={{paddingLeft: '10px'}}>MeMe Generator</strong>
+          </Navbar.Brand>
         <Nav activeKey={tab}>
           <Nav.Item>
             <Nav.Link eventKey="gallery">Gallery</Nav.Link>

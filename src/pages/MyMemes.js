@@ -28,7 +28,7 @@ export default function MyMemes() {
 
   
   return (
-    <div className="gallery">
+    <div className="ga  llery">
         { savedMemes[0] ? 
         (<ul>
           {   
