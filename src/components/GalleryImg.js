@@ -9,9 +9,9 @@ export default function GalleryImg({ img }) {
     img ?
       (
         <OverlayTrigger 
-        placement={"right-end"}
+        placement={"top"}
         overlay={
-          <Popover id={`popover-positioned-right-end`} style={{zIndex: 1}}>
+          <Popover id={`popover-positioned-top`} style={{zIndex: 1}}>
           <Popover.Title as="h3">{img.name}</Popover.Title>
           {img.bottomText || img.topText &&
           <Popover.Content>

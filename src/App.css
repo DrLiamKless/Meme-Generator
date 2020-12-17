@@ -23,6 +23,27 @@ html{
   border: 1px solid black;
 }
 
+.landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Nunito';
+  min-height: 100vh;
+  min-width: 100vw;
+  scale: (2);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title{
+  font-family: 'Nunito', sans-serif;
+}
+
+.landing-header{
+  height: 100%;
+  width: 100%;
+}
+
 .modal-img{
   max-height: 20rem;
   border: 1px solid black;
@@ -46,8 +67,8 @@ ul {
 }
 
 .gallery{
-  max-height: 100%;
-  max-width: 100%;
+  min-height: 120vh;
+  max-width: 100vw;
   align-items: center;
   overflow-Y: auto;
   padding: 45px; 
@@ -55,14 +76,14 @@ ul {
 }
 
 #editor{
+  min-height: 110vh;
+  max-width: 100vw;
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  overflow-Y: scroll;
-  padding: 30px; 
-  padding-bottom: 100px;
+  padding: 120px;
 }
 
 #dashboard ul{
@@ -78,6 +99,7 @@ ul {
 
 .canvas-container{
   box-shadow: 10px 10px 42px 0 rgba(0,0,0,0.75);
+  z-index: 1;
 }
 
 

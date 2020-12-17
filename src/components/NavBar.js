@@ -1,10 +1,27 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {Nav, Navbar, Overlay } from 'react-bootstrap'
 import icon from '../images/icon.jpg'
 
 export default function NavBar({setTab, tab, pickedMeme}) {
-  const [showDisabledAlert, setShowDisabledAlert] = useState(false);
   const editorNav = useRef(null);
+  const [showDisabledAlert, setShowDisabledAlert] = useState(false);
+  
+  const [scrollPosition, setScrollPosition] = useState(0);
+  
+  const handleScroll = () => {
+      const position = window.pageYOffset;
+      setScrollPosition(position);
+  };
+
+  // tacking the scroll event
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
 
   const showAlert = () => {
     setShowDisabledAlert(true);
@@ -14,11 +31,11 @@ export default function NavBar({setTab, tab, pickedMeme}) {
   }
 
   return (
-    <div style={{width: '100vw'}}>
+    <div style={{width: '100vw', position: scrollPosition > window.innerHeight ? 'fixed' : 'relative', top: 0, zIndex: 2}}>
       <Navbar onSelect={(tab) => setTab(tab)} expand="lg" bg="dark" variant="dark">
         <Navbar.Brand>
-          <img src={icon} style={{height: '30px', width: '30px'}}/>
-          <strong style={{paddingLeft: '10px'}}>MeMe Generator</strong>
+          <img src={icon} style={{height: '30px', width: '30px', fontFamily: "Nunito"}}/>
+          <strong style={{paddingLeft: '10px'}}>Meme Generator</strong>
           </Navbar.Brand>
         <Nav activeKey={tab}>
           <Nav.Item>
@@ -38,6 +55,7 @@ export default function NavBar({setTab, tab, pickedMeme}) {
                     padding: '2px 10px',
                     color: 'white',
                     borderRadius: 3,
+                    zIndex: 3,
                     ...props.style,
                   }}
                 >
