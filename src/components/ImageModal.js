@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, Collapse, ListGroup, ListGroupItem, Modal } from 'react-bootstrap';
+import { Button, Card, Collapse, ListGroup, ListGroupItem, Modal, Spinner } from 'react-bootstrap';
 
 export default function ImageModal({ image, show, handleKeepSearching, handlePickMeme }) {
   return (
@@ -24,10 +24,6 @@ export default function ImageModal({ image, show, handleKeepSearching, handlePic
                 Keep Searchin'
               </Button>
             </span>
-            {/* <ListGroup className="list-group-flush">
-              <ListGroupItem>meme tags</ListGroupItem>
-              <ListGroupItem>meme rank</ListGroupItem>
-            </ListGroup> */}
           </Card>
         </Collapse>
       </Modal.Body>
