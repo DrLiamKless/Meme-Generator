@@ -5,8 +5,6 @@ import { saveAs } from 'file-saver';
 
 export default function Canvas({ image }) {
   const [canvas, setCanvas] = useState(undefined);
-  const canvasRef = useRef(undefined)
-  const [decorations, setDecorations] = useState([])
   
   // canvas initiator 
   const initCanvas = () => (
@@ -22,12 +20,6 @@ export default function Canvas({ image }) {
   
   // create canvas
   useEffect(() => {
-    console.log(
-      canvasRef
-      )
-  }, [canvasRef]);
-
-  useEffect(() => {
     setCanvas(initCanvas());
   }, []);
 
@@ -41,10 +33,22 @@ export default function Canvas({ image }) {
       }, 500)
     }
   }, [canvas]);
-  
-  // join elements to decorations
-  const joinToDecorations = ((decoration) => {setDecorations(prevDecorations => [...prevDecorations, decoration])})
-  
+    
+   // add backgroundImage
+  const addBackgroundImage = (canvi, image) => {
+    new fabric.Image.fromURL(image.url, (img => {
+    canvi.backgroundImage = img;
+    canvi.renderAll()
+  }) ,{crossOrigin: "anonymous"});
+  }
+
+  const deleteObject = (canvi) => {
+    const activeObject = canvi.getActiveObject()
+    if (activeObject) {
+      canvas.remove(activeObject);
+    }
+  }
+
   // add rectangle
   const addRect = canvi => {
     const rect = new fabric.Rect({
@@ -66,16 +70,9 @@ export default function Canvas({ image }) {
     });
     canvi.add(textBox);
     // canvi.renderAll();
-    joinToDecorations(textBox)
   }
 
-  const addBackgroundImage = (canvi, image) => {
-      new fabric.Image.fromURL(image.url, (img => {
-      canvi.backgroundImage = img;
-      canvi.renderAll()
-    }) ,{crossOrigin: "anonymous"});
-  }
-
+  // download meme
   const downloadMeme = (canvi, name="myMeme.jpg") => {
     saveAs(canvi.toDataURL("image/png").replace("image/png", "image/octet-stream"), name)
   }
@@ -84,8 +81,9 @@ export default function Canvas({ image }) {
       <div>
         <h1>Editor</h1>
         <Button onClick={() => addText(canvas, 'add')}>Add Text</Button>
+        <Button onClick={() => deleteObject(canvas)}>Delete</Button>
         <Button onClick={() => {downloadMeme(canvas)}}>download</Button>
-        <canvas id="canvas" ref={canvasRef} />
+        <canvas id="canvas" />
       </div>
   );
 }
