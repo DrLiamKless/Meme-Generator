@@ -18,7 +18,7 @@ export default function MyMemes() {
     try {
       setSavedMemes((prevMemes => {
         prevMemes.splice(index, 1)
-        localStorage.setItem('savedMemes', JSON.stringify(prevMemes))
+        localStorage.setItem('savedMemes', JSON.stringify([...prevMemes]))
         return [...prevMemes]
       }))
     } catch (error) {
@@ -28,7 +28,7 @@ export default function MyMemes() {
 
   
   return (
-    <div className="my-memes">
+    <div className="gallery">
         { savedMemes[0] ? 
         (<ul>
           {   

@@ -7,9 +7,9 @@ export default function Gallery({ setPickedMeme, pickedMeme, setTab }) {
   const [images, setImages] = useState([])
   const [showMemeModal, setShowMemeModal] = useState(false);
 
-  const handleShowModal = (image) => {setShowMemeModal(true); setPickedMeme(image)};
-  const handlePickMeme = () => {setShowMemeModal(false); setTab('editor')};
-  const handleKeepSearching = () => {setShowMemeModal(false); setPickedMeme(undefined)};
+  const handleShowModal = (image) => {setShowMemeModal(image);};
+  const handlePickMeme = () => {setShowMemeModal(false); setPickedMeme(showMemeModal); setTab('editor')};
+  const handleKeepSearching = () => {setShowMemeModal(false)};
 
   const fetchImages = async () => {
     const { data } = await axios.get('https://api.imgflip.com/get_memes');
@@ -36,8 +36,8 @@ export default function Gallery({ setPickedMeme, pickedMeme, setTab }) {
         ))}
       </ul>
       <ImageModal 
-        image={pickedMeme}
-        show={showMemeModal}
+        image={showMemeModal}
+        show={showMemeModal ? true : false}
         handlePickMeme={handlePickMeme}
         handleKeepSearching={handleKeepSearching}
       />

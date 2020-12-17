@@ -11,7 +11,6 @@ import MyMemes from './pages/MyMemes';
 function App() {
   const [pickedMeme, setPickedMeme] = useState(undefined);
   const [tab, setTab] = useState('gallery');
-  const [storageFull, setStorageFull] = useState(false);
 
   return (
     <div className="App">
@@ -22,11 +21,11 @@ function App() {
       }
       {
         tab === 'editor' &&
-      <Editor image={pickedMeme} setStorageFull={setStorageFull} storageFull={storageFull} />
+      <Editor image={pickedMeme} />
       }
       {
         tab === 'my memes' &&
-        <MyMemes storageFull={storageFull}/>
+        <MyMemes />
       }
     </div>
   );

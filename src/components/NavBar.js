@@ -46,9 +46,6 @@ export default function NavBar({setTab, tab, pickedMeme}) {
             <Nav.Link eventKey="my memes">My memes</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="about">About</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
           </Nav.Item>
         </Nav>
       </Navbar>
