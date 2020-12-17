@@ -9,7 +9,6 @@ export default function MyMemes() {
     try{
       const memesFromLocalStorage = localStorage.getItem("savedMemes")
       setSavedMemes(JSON.parse(memesFromLocalStorage));
-      console.log(savedMemes)
     } catch (error) {
       console.log(error)
     }
