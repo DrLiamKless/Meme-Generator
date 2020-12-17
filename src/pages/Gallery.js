@@ -21,7 +21,7 @@ export default function Gallery({ setPickedMeme, pickedMeme, setTab }) {
   }, [])
 
   return (
-    <div id="gallery">
+    <div className="gallery">
       <ul>
         {images?.map(image => (
           <li

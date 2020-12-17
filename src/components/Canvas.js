@@ -3,7 +3,7 @@ import { fabric } from 'fabric';
 import { Button } from 'react-bootstrap';
 import { saveAs } from 'file-saver';
 
-export default function Canvas({ image }) {
+export default function Canvas({ image, setStorageFull }) {
   const [canvas, setCanvas] = useState(undefined);
   
   // canvas initiator 
@@ -77,12 +77,27 @@ export default function Canvas({ image }) {
     saveAs(canvi.toDataURL("image/png").replace("image/png", "image/octet-stream"), name)
   }
 
+  const saveToFavorites = (canvi, name="myMeme") => {
+    try {
+      const url = canvi.toDataURL("image/png").replace("image/png", "image/octet-stream")
+      const savedMemes = JSON.parse(localStorage.getItem("savedMemes")) || [];
+      savedMemes.push({name, url});
+      localStorage.setItem("savedMemes", JSON.stringify(savedMemes));
+    } catch (error) {
+      if(error.name === "QuotaExceededError") {
+        setStorageFull(true)
+      }
+      console.log(error)
+    } 
+  }
+
     return(
       <div>
         <h1>Editor</h1>
         <Button onClick={() => addText(canvas, 'add')}>Add Text</Button>
         <Button onClick={() => deleteObject(canvas)}>Delete</Button>
         <Button onClick={() => {downloadMeme(canvas)}}>download</Button>
+        <Button onClick={() => {saveToFavorites(canvas)}}>save to favorites</Button>
         <canvas id="canvas" />
       </div>
   );

@@ -41,10 +41,10 @@ ul {
   list-style-type: none;
 }
 
-#gallery{
+.gallery{
   max-height: 100%;
   max-width: 100%;
-  overflow-Y: scroll;
+  overflow-Y: auto;
   padding: 45px; 
   padding-top: 60px;
 }
@@ -64,7 +64,7 @@ ul {
 /* scrollbar */
 /* width */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 10px;
 }
 
 /* Track */
