@@ -8,7 +8,8 @@ A Basic Meme Generator for practicing UI/UX
 * `npm i` in main root
 * `npm run build` in main root
 * `cd server` && `npm i`
-* ###### Go To http://localhost:8080/
+* run `nodemon` in cd server
+* ###### You'r Ready To Go - http://localhost:8080/
 
 ### Features:
 
