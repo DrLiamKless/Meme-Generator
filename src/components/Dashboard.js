@@ -59,10 +59,10 @@ export default function Dashboard({ image ,canvas, setStorageFull }) {
 
   const addCircle = canvi => {
     const circle = new fabric.Circle({
-      height: 200,
-      width: 200,
+      radius: 100,
       fill: 'orange'
     });
+    console.log(circle)
     canvi.add(circle);
     canvi.renderAll();
   }
@@ -130,9 +130,9 @@ export default function Dashboard({ image ,canvas, setStorageFull }) {
       </ul>
       <ul>
         <li><Button size="lg" variant="dark" onClick={() => addText(canvas, 'TEXT')}><Type /></Button></li>
-        <li><SquareFill className="rect" onClick={() => addRect(canvas)}></SquareFill></li>
-        <li><TriangleFill className="triangle" onClick={() => addTriangle(canvas)}></TriangleFill></li>
-        <li><CircleFill className="circle" onClick={() => addCircle(canvas)}></CircleFill></li>
+        <li><SquareFill className="rect" onClick={() => addRect(canvas)} /></li>
+        <li><TriangleFill className="triangle" onClick={() => addTriangle(canvas)} /></li>
+        <li><CircleFill className="circle" onClick={() => addCircle(canvas)} /></li>
       </ul>
     </div>
   )
