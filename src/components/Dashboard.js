@@ -2,7 +2,7 @@ import React, { useEffec, useEffect, useStatet } from 'react'
 import { fabric } from 'fabric';
 import { Button } from 'react-bootstrap';
 import { saveAs } from 'file-saver';
-import { Download, StarFill, Trash, Type } from 'react-bootstrap-icons'
+import { Download, StarFill, Trash, Type, TriangleFill, SquareFill, CircleFill } from 'react-bootstrap-icons'
 import { SketchPicker } from 'react-color';
 
 export default function Dashboard({ image ,canvas, setStorageFull }) {
@@ -28,6 +28,7 @@ export default function Dashboard({ image ,canvas, setStorageFull }) {
   }) ,{crossOrigin: "anonymous"});
   }
 
+  // delete active object
   const deleteObject = (canvi) => {
     const activeObject = canvi.getActiveObject()
     if (activeObject) {
@@ -38,11 +39,31 @@ export default function Dashboard({ image ,canvas, setStorageFull }) {
   // add rectangle
   const addRect = canvi => {
     const rect = new fabric.Rect({
-      height: 280,
+      height: 200,
       width: 200,
-      fill: 'yellow'
+      fill: 'green'
     });
     canvi.add(rect);
+    canvi.renderAll();
+  }
+
+  const addTriangle = canvi => {
+    const triangle = new fabric.Triangle({
+      height: 200,
+      width: 200,
+      fill: 'blue'
+    });
+    canvi.add(triangle);
+    canvi.renderAll();
+  }
+
+  const addCircle = canvi => {
+    const circle = new fabric.Circle({
+      height: 200,
+      width: 200,
+      fill: 'orange'
+    });
+    canvi.add(circle);
     canvi.renderAll();
   }
 
@@ -60,12 +81,15 @@ export default function Dashboard({ image ,canvas, setStorageFull }) {
     // canvi.renderAll();
   }
 
+  // change color of active object
   const changeColor = (canvi, color) => {
     try {
+      const rgb = color.rgb;
+      const {r, g, b, a} = rgb
       const activeObject = canvi?.getActiveObject()
-      console.log(activeObject)
-      activeObject?.set({fill: color.hex})
+      activeObject?.set({fill: `rgba(${r},${g},${b},${a})`})
     } catch (err) {
+      console.log(err)
     }
   }
 
@@ -74,6 +98,7 @@ export default function Dashboard({ image ,canvas, setStorageFull }) {
     saveAs(canvi.toDataURL("image/png").replace("image/png", "image/octet-stream"), name)
   }
 
+  // save to favorites
   const saveToFavorites = (canvi, name="myMeme") => {
     try {
       const url = canvi.toDataURL("image/png").replace("image/png", "image/octet-stream")
@@ -88,18 +113,27 @@ export default function Dashboard({ image ,canvas, setStorageFull }) {
       console.log(error)
     } 
   }
-  
+
   return (
     <div id="dashboard">
       <nav>
         <ul>
-          <li><Button size="lg" variant="danger" onClick={() => changeColor(canvas)}><Trash /></Button></li>
-          <li><Button size="lg" variant="dark" onClick={() => addText(canvas, 'add')}><Type /></Button></li>
+          <li><Button size="lg" variant="danger" onClick={() => deleteObject(canvas)}><Trash /></Button></li>
           <li><Button size="lg" variant="secondary" onClick={() => {downloadMeme(canvas)}}><Download /></Button></li>
           <li><Button size="lg" variant="info" onClick={() => {saveToFavorites(canvas)}}><StarFill /></Button></li>
         </ul>
       </nav>
-          <SketchPicker disableAlpha={true} onChange={(color, event) => {changeColor(canvas, color)}}/>
+      <ul>
+        <il>
+          <SketchPicker onChange={(color, event) => {changeColor(canvas, color)}}/>
+        </il>
+      </ul>
+      <ul>
+        <li><Button size="lg" variant="dark" onClick={() => addText(canvas, 'TEXT')}><Type /></Button></li>
+        <li><SquareFill className="rect" onClick={() => addRect(canvas)}></SquareFill></li>
+        <li><TriangleFill className="triangle" onClick={() => addTriangle(canvas)}></TriangleFill></li>
+        <li><CircleFill className="circle" onClick={() => addCircle(canvas)}></CircleFill></li>
+      </ul>
     </div>
   )
 }
