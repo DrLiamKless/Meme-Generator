@@ -1,4 +1,4 @@
-import React, { useEffec, useEffect, useStatet } from 'react'
+import React, { useEffect } from 'react'
 import { fabric } from 'fabric';
 import { Button } from 'react-bootstrap';
 import { saveAs } from 'file-saver';
@@ -7,7 +7,7 @@ import { SketchPicker } from 'react-color';
 
 export default function Dashboard({ image ,canvas, setStorageFull }) {
       
-  //  setDecorations on start
+  //  set decorations on start
   useEffect(() => {
     if(canvas) {
       setTimeout(() => {

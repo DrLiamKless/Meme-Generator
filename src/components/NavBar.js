@@ -34,7 +34,7 @@ export default function NavBar({setTab, tab, pickedMeme}) {
     <div style={{width: '100vw', position: scrollPosition > window.innerHeight ? 'fixed' : 'relative', top: 0, zIndex: 2}}>
       <Navbar onSelect={(tab) => setTab(tab)} expand="lg" bg="dark" variant="dark">
         <Navbar.Brand>
-          <img src={icon} style={{height: '30px', width: '30px', fontFamily: "Nunito"}}/>
+          <img alt="icon" src={icon} style={{height: '30px', width: '30px', fontFamily: "Nunito"}}/>
           <strong style={{paddingLeft: '10px'}}>Meme Generator</strong>
           </Navbar.Brand>
         <Nav activeKey={tab}>

@@ -14,7 +14,7 @@ export default function Canvas({ height, width, setCanvas }) {
   // create canvas
   useEffect(() => {
     setCanvas(initCanvas());
-  }, []);
+  },[]);
 
     return(
       <div id="canvas-container"> 

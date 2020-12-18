@@ -37,12 +37,11 @@ function Landing() {
                   io
                 </span>
               </h1>
-              <Button variant="light" size="sm" style={{borderRadius: "50%"}}>
+              <button class="btn btn-outline-light" size="sm" style={{borderRadius: "40%"}} onClick={() => { Scroll.animateScroll.scrollTo(window.innerHeight); }}>
                 <ArrowDownShort
                   className={"go down"}
-                  onClick={() => { Scroll.animateScroll.scrollTo(window.innerHeight); }}
                 />
-              </Button>
+              </button>
             </div>
           </Collapse>
         </div>
