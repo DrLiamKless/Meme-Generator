@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Badge } from 'react-bootstrap';
+import { Badge, Image } from 'react-bootstrap';
 import GalleryImg from '../components/GalleryImg';
+import myMemeImg from '../images/myMeme.jpg'
 
 export default function MyMemes() {
   const [savedMemes, setSavedMemes] = useState([])
@@ -25,10 +26,16 @@ export default function MyMemes() {
       console.log(error)
     }
   }
-
   
   return (
-    <div className="ga  llery">
+    <div className="gallery">
+        <h1>Our Meme:</h1>
+        <ul>
+          <li className="gallery-list-item">
+            <Image src={myMemeImg} />
+          </li >
+        </ul>
+        <h1 style={{paddingTop: '200px'}}>Your Memes:</h1>
         { savedMemes[0] ? 
         (<ul>
           {   

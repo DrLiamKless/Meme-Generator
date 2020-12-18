@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, Collapse, ListGroup, ListGroupItem, Modal, Spinner } from 'react-bootstrap';
+import { Button, Card, Collapse, Modal } from 'react-bootstrap';
 
 export default function ImageModal({ image, show, handleKeepSearching, handlePickMeme }) {
   return (

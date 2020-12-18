@@ -22,6 +22,7 @@ export default function Gallery({ setPickedMeme, pickedMeme, setTab }) {
 
   return (
     <div className="gallery">
+      <h1 style={{fontFamily: "Spirax", paddingBottom: '60px'}}>One Meme is worth a thousand words...</h1>
       <ul>
         {images?.map(image => (
           <li
