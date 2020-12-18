@@ -1,6 +1,9 @@
 # Meme-Generator
 A Basic Meme Generator for practicing UI/UX
 
+###Landing page
+![landing page](./readme-files/Meme-Landing.jpeg)
+
 # Instruction:
 
 ### Setup:
