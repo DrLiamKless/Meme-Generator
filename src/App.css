@@ -95,10 +95,14 @@ ul {
 
 #dashboard {
   display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
 }
 
 .canvas-container{
   box-shadow: 10px 10px 42px 0 rgba(0,0,0,0.75);
+  align-content: center;
   z-index: 1;
 }
 

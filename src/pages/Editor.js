@@ -17,6 +17,7 @@ export default function Editor({ image }) {
 
   return (
     <>
+      <h1 style={{paddingTop:"40px"}}>{image.name}</h1>
       <div id="editor">
       <Alert 
         show={storageFull.show} 
