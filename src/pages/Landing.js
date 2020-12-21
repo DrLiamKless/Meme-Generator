@@ -21,20 +21,14 @@ function Landing() {
               <h1 className={"title"}>
                 Welcome To
                 <br />
-                <span className={"Chimu"} style={{color: 'rgb(234,125,83)'}}>
-                  Chimu
-                </span>
-                <span className={"."} style={{color: 'white'}}>
-                  .
-                </span>
-                <span className={"Memes"} style={{color: '#2F4858'}}>
+                <span className={"Memes"} style={{color: 'rgb(234,125,83)'}}>
                   Memes
                 </span>
                 <span className={"."} style={{color: 'white'}}>
                   .
                 </span>
                 <span className={"io"}>
-                  io
+                  generator
                 </span>
               </h1>
               <button class="btn btn-outline-light" size="sm" style={{borderRadius: "40%"}} onClick={() => { Scroll.animateScroll.scrollTo(window.innerHeight); }}>
