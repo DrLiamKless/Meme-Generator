@@ -28,7 +28,7 @@ function Landing() {
                   .
                 </span>
                 <span className={"io"}>
-                  generator
+                  Generator
                 </span>
               </h1>
               <button class="btn btn-outline-light" size="sm" style={{borderRadius: "40%"}} onClick={() => { Scroll.animateScroll.scrollTo(window.innerHeight); }}>
